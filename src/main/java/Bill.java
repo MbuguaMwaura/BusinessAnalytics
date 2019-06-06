@@ -5,6 +5,9 @@ import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.*;
+import java.lang.*;
+import java.io.Console;
 
 public class Bill{
     private int id;
@@ -16,6 +19,9 @@ public class Bill{
     private int vendor_id;
     private int purchase_id;
     private int payment_id;
+
+    Console ob = System.console();
+
 
     public Bill(String description, int quantity, int price, boolean paid, int vendor_id, int purchase_id, int payment_id) {
         this.description = description;
@@ -77,6 +83,16 @@ public class Bill{
     public Purchases getProduct(int id) {
         return Purchases.find(id);
     }
+
+    public static int getTotalBills(int[] amounts){
+        int sum = IntStream.of(amounts).sum();
+        return sum;
+    }
+
+//    public static List<Bill> allBills(){
+//        Bill bills =
+//    }
+
 
     @Override
     public boolean equals(Object o) {

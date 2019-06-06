@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4600db91-5457-4875-9b7a-47688520ca15" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sales.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/addbill.vtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/addproductsale.vtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/sales.vtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/addreceipt.vtl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Purchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Purchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addproductpurchase.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addproductpurchase.vtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/bills.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/bills.vtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dash.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dash.vtl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/purchases.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/purchases.vtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/receipts.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/receipts.vtl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -39,10 +37,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2963">
-              <caret line="69" column="52" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
+            <state relative-caret-position="-2755">
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#8015#8031#0" expanded="true" />
                 <element signature="e#9116#9132#0" expanded="true" />
               </folding>
@@ -53,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Bill.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+            <state relative-caret-position="667">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1581#1582#0" expanded="true" />
@@ -69,68 +66,98 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addbill.vtl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="102" column="40" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/bills.vtl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="361">
+              <caret line="106" column="16" lean-forward="true" selection-end-line="126" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Purchases.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/bills.vtl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            <state relative-caret-position="232">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/receipts.vtl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dash.vtl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="479">
+              <caret line="84" column="111" lean-forward="true" selection-start-line="84" selection-start-column="111" selection-end-line="84" selection-end-column="111" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Receipt.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="547">
+              <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#529#530#0" expanded="true" />
-                <element signature="e#554#555#0" expanded="true" />
-                <element signature="e#587#588#0" expanded="true" />
-                <element signature="e#614#615#0" expanded="true" />
-                <element signature="e#645#646#0" expanded="true" />
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#739#740#0" expanded="true" />
-                <element signature="e#777#778#0" expanded="true" />
-                <element signature="e#811#812#0" expanded="true" />
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#887#888#0" expanded="true" />
+                <element signature="e#796#797#0" expanded="true" />
+                <element signature="e#821#822#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <element signature="e#893#894#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#986#987#0" expanded="true" />
+                <element signature="e#1017#1018#0" expanded="true" />
+                <element signature="e#1046#1047#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1105#1106#0" expanded="true" />
+                <element signature="e#1132#1133#0" expanded="true" />
+                <element signature="e#1165#1166#0" expanded="true" />
+                <element signature="e#1199#1200#0" expanded="true" />
+                <element signature="e#1234#1235#0" expanded="true" />
+                <element signature="e#1267#1268#0" expanded="true" />
+                <element signature="e#1301#1302#0" expanded="true" />
+                <element signature="e#1334#1335#0" expanded="true" />
+                <element signature="e#1560#1561#0" expanded="true" />
+                <element signature="e#1598#1599#0" expanded="true" />
+                <element signature="e#1640#1641#0" expanded="true" />
+                <element signature="e#1681#1682#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
+                <element signature="e#1710#1711#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addproductsale.vtl">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addreceipt.vtl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1081">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="639">
+              <caret line="93" column="53" selection-start-line="93" selection-start-column="53" selection-end-line="93" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/purchases.vtl">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="10" column="34" lean-forward="true" selection-end-line="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addproductpurchase.vtl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="65" column="4" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="75" selection-end-column="12" />
+            <state relative-caret-position="348">
+              <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -139,8 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sightings</find>
-      <find>name</find>
       <find>Account</find>
       <find>account</find>
       <find>Expense</find>
@@ -166,6 +191,11 @@
       <find>ex</find>
       <find>addbill</find>
       <find>qua</find>
+      <find>ill</find>
+      <find>BILL</find>
+      <find>ve</find>
+      <find>receip</find>
+      <find>bills</find>
     </findStrings>
     <replaceStrings>
       <replace>income</replace>
@@ -180,7 +210,6 @@
       <replace>Customer_id</replace>
       <replace>productSale</replace>
       <replace>product_id</replace>
-      <replace>receipt</replace>
       <replace>Email</replace>
       <replace>vendor</replace>
       <replace>Vendor</replace>
@@ -193,6 +222,9 @@
       <replace>sales</replace>
       <replace>Expense</replace>
       <replace>sale</replace>
+      <replace>receipt</replace>
+      <replace>RECEIPT</replace>
+      <replace>Receipt</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -216,7 +248,6 @@
         <option value="$PROJECT_DIR$/src/test/java/ProductPurchaseTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ProductSale.java" />
         <option value="$PROJECT_DIR$/src/test/java/ProductSaleTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Receipt.java" />
         <option value="$PROJECT_DIR$/src/test/java/ReceiptTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/VendorTest" />
         <option value="$PROJECT_DIR$/src/main/java/Customer.java" />
@@ -230,7 +261,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/vendors.vtl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addvendors.vtl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/accounts.vtl" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/scripts.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addincome.vtl" />
         <option value="$PROJECT_DIR$/src/main/java/Income.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/incomes.vtl" />
@@ -244,18 +274,24 @@
         <option value="$PROJECT_DIR$/src/main/java/Sales.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/sales.vtl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addproductsale.vtl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addbill.vtl" />
-        <option value="$PROJECT_DIR$/src/main/java/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bill.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/addreceipt.vtl" />
+        <option value="$PROJECT_DIR$/src/main/java/Receipt.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/receipts.vtl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/dash.vtl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/bills.vtl" />
+        <option value="$PROJECT_DIR$/src/main/java/Bill.java" />
+        <option value="$PROJECT_DIR$/src/main/java/App.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/scripts.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="x" value="400" />
+    <option name="y" value="43" />
+    <option name="width" value="2400" />
+    <option name="height" value="1757" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -294,14 +330,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="business_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="business_analytics" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="business_analytics" type="b2602c69:ProjectViewProjectNode" />
@@ -367,6 +395,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="43" width="3200" height="1757" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28084832" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -427,13 +456,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build/reports/tests/test/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/DataBaseRule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -470,34 +492,6 @@
           <caret line="38" column="42" selection-end-line="40" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Receipt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#796#797#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#859#860#0" expanded="true" />
-            <element signature="e#893#894#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1301#1302#0" expanded="true" />
-            <element signature="e#1334#1335#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -558,14 +552,8 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/productspurchases.vtl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/receipts.vtl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/images/calculator.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dash.vtl">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/VendorTest">
       <provider selected="true" editor-type-id="text-editor">
@@ -704,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenses.vtl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -790,13 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/purchases.vtl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -822,18 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2963">
-          <caret line="69" column="52" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8015#8031#0" expanded="true" />
-            <element signature="e#9116#9132#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -873,13 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addbill.vtl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="102" column="40" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Purchases.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -902,10 +857,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addreceipt.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="93" column="53" selection-start-line="93" selection-start-column="53" selection-end-line="93" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Receipt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1165#1166#0" expanded="true" />
+            <element signature="e#1199#1200#0" expanded="true" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1267#1268#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1560#1561#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="true" />
+            <element signature="e#1640#1641#0" expanded="true" />
+            <element signature="e#1681#1682#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/receipts.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layoutMbugua.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dash.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addbill.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="106" column="16" lean-forward="true" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/bills.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+        <state relative-caret-position="667">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1581#1582#0" expanded="true" />
@@ -916,10 +947,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/bills.vtl">
+    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="-2755">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding>
+            <element signature="e#8015#8031#0" expanded="true" />
+            <element signature="e#9116#9132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="84" column="111" lean-forward="true" selection-start-line="84" selection-start-column="111" selection-end-line="84" selection-end-column="111" />
         </state>
       </provider>
     </entry>

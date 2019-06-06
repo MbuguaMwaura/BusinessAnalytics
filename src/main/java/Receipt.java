@@ -1,6 +1,7 @@
 import org.sql2o.*;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -50,7 +51,7 @@ public class Receipt{
         return paid;
     }
 
-    public int getVendor_id() {
+    public int getCustomer_id() {
         return customer_id;
     }
 
@@ -60,6 +61,23 @@ public class Receipt{
 
     public int getPayment_id() {
         return payment_id;
+    }
+
+    public String getFormattedDate(){
+        return DateFormat.getDateTimeInstance().format(date);
+    }
+
+
+
+    public Customer getCustomer(int id) {
+        return Customer.find(id);
+    }
+    public Sales getSales(int id) {
+        return Sales.find(id);
+    }
+
+    public Account getAccount(int id){
+        return Account.find(id);
     }
 
     @Override

@@ -2,7 +2,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Arrays;
 
 
 import spark.ModelAndView;
@@ -18,7 +18,7 @@ public class App{
 
 
     public static void main(String[] args){
-
+        System.out.println(Bill.all());
 
         staticFileLocation("/public");
         String layout = "templates/layoutMbugua.vtl";
@@ -59,6 +59,7 @@ public class App{
 
         get("/receipts", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("receipts", Receipt.all());
             model.put("template", "templates/receipts.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -253,6 +254,37 @@ public class App{
             bill.save();
             String url = String.format("/bills");
             response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/addreceipt", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("customers", Customer.all());
+            model.put("sales", Sales.all());
+            model.put("accounts", Account.all());
+            model.put("template", "templates/addreceipt.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/addingreceipt", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String description = request.queryParams("description");
+            int quantity = Integer.parseInt(request.queryParams("quantity"));
+            int price = Integer.parseInt(request.queryParams("price"));
+            boolean paid = Boolean.parseBoolean(request.queryParams("paid"));
+            int customer_id = Integer.parseInt(request.queryParams("customer_id"));
+            int sale_id = Integer.parseInt(request.queryParams("purchase_id"));
+            int payment_id = Integer.parseInt(request.queryParams("account_id"));
+            Receipt receipt= new Receipt(description,quantity,price,paid,customer_id,sale_id,payment_id);
+            receipt.save();
+            String url = String.format("/receipts");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/dash", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/dash.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 

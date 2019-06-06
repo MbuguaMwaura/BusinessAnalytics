@@ -1,0 +1,116 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add a new receipt" href="/addreceipt"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+            business news can go here
+        </div>
+
+        <div class = "col m8">
+
+        <h2>RECEIPTS</h2>
+
+<hr>
+
+    #if($receipts.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add a receipt.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+
+                          <th>Date</th>
+                          <th>Description</th>
+                           <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Payment Status</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Account</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($receipt in $receipts)
+                      <tr>
+
+                        <td>$receipt.getFormattedDate()</td>
+                        <td>$receipt.getDescription()</td>
+                        <td>$receipt.getQuantity()</td>
+                        <td>$receipt.getPrice()</td>
+                        <td>
+
+                        #if($receipt.isPaid())
+                              <span class="new badge" data-badge-caption="">Paid</span>
+                          #else
+                              <span class="new badge red" data-badge-caption="">Not-paid</span>
+                        #end
+
+                        </td>
+                        <td>$receipt.getCustomer($receipt.getCustomer_id()).getName()</td>
+                        <td>$receipt.getSales($receipt.getPurchase_id()).getName()</td>
+                        <td>$receipt.getAccount($receipt.getPayment_id()).getName()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
