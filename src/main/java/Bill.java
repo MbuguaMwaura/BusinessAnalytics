@@ -84,8 +84,21 @@ public class Bill{
         return Purchases.find(id);
     }
 
-    public static int getTotalBills(int[] amounts){
-        int sum = IntStream.of(amounts).sum();
+    public static int getTotalBills(){
+        try(Connection connection = DB.sql2o.open()){
+
+            String sql = "SELECT price FROM bill";
+            List<Bill> bills = connection.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Bill.class);
+            Bill[] array  = new Bill[bills.size()];
+            for (int i =0; i < bills.size(); i++)
+                array[i] = bills.get(i);
+
+
+            int sum = IntStream.of(array).sum();
+        }
+
         return sum;
     }
 

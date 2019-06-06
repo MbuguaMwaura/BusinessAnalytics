@@ -101,6 +101,12 @@
 
          #end
 
+         #if($bills)
+
+         $bills.all().getTotalBills($bill.price())
+
+         #end
+
         </div>
 
         <div class = "col m1">
