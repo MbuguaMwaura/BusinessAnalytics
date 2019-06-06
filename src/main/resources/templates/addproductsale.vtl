@@ -10,7 +10,7 @@
           <div class = "col m6 s12">
 
         <h5>Add Product</h5>
-        <p class= "text lighten">These are products that you purchase.</p>
+        <p class= "text lighten">These are products that you intend to sell.</p>
 
           </div>
 
@@ -33,7 +33,7 @@
 
           <div class = "col m6 s12">
 
-<form action="/addingproductpurchase" method="post">
+<form action="/addingproductsale" method="post">
 
 
 
@@ -63,17 +63,6 @@
       </div>
     </div>
 
-      <div class="row">
-      <div class="input-field col s12">
-        <select name = "vendor_id">
-          <option value="" disabled selected>Choose your option</option>
-          #foreach($vendor in $vendors)
-            <option value="$vendor.getId()">$vendor.getName()</option>
-          #end
-        </select>
-        <label>Vendors</label>
-      </div>
-      </div>
 
  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">send</i>

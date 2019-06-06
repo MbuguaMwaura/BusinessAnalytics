@@ -65,6 +65,10 @@ public class App{
 
         get("/bills", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("accounts", Account.all());
+            model.put("vendors", Vendor.all());
+            model.put("purchases", Purchases.all());
+            model.put("bills", Bill.all());
             model.put("template", "templates/bills.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -177,6 +181,7 @@ public class App{
 
         get("/addproductpurchase", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("vendors", Vendor.all());
             model.put("template", "templates/addproductpurchase.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -200,5 +205,56 @@ public class App{
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        get("/sales", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("sales", Sales.all());
+            model.put("template", "templates/sales.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/addingproductsale", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String description = request.queryParams("description");
+            int amount = Integer.parseInt(request.queryParams("amount"));
+            Sales sales= new Sales(name,amount,description);
+            sales.save();
+            String url = String.format("/sales");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/addproductsale", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/addproductsale.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/addbill", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("vendors", Vendor.all());
+            model.put("purchases", Purchases.all());
+            model.put("accounts", Account.all());
+            model.put("template", "templates/addbill.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/addingbill", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String description = request.queryParams("description");
+            int quantity = Integer.parseInt(request.queryParams("quantity"));
+            int price = Integer.parseInt(request.queryParams("price"));
+            boolean paid = Boolean.parseBoolean(request.queryParams("paid"));
+            int vendor_id = Integer.parseInt(request.queryParams("vendor_id"));
+            int purchase_id = Integer.parseInt(request.queryParams("purchase_id"));
+            int payment_id = Integer.parseInt(request.queryParams("account_id"));
+            Bill bill= new Bill(description,quantity,price,paid,vendor_id,purchase_id,payment_id);
+            bill.save();
+            String url = String.format("/bills");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
     }
 }

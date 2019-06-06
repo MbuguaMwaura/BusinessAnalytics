@@ -1,6 +1,7 @@
 import org.sql2o.*;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -62,6 +63,21 @@ public class Bill{
         return payment_id;
     }
 
+    public String getFormattedDate(){
+        return DateFormat.getDateTimeInstance().format(date);
+    }
+
+    public Account getAccount(int id){
+        return Account.find(id);
+    }
+
+    public Vendor getVendor(int id) {
+        return Vendor.find(id);
+    }
+    public Purchases getProduct(int id) {
+        return Purchases.find(id);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,7 +113,9 @@ public class Bill{
     public static List<Bill> all(){
         try(Connection connection = DB.sql2o.open()){
             String sql = "SELECT * FROM bill";
-            return connection.createQuery(sql).executeAndFetch(Bill.class);
+            return connection.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Bill.class);
         }
     }
 

@@ -12,7 +12,7 @@
 
 
 
-  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Product" href="/addproductpurchase"><i class="material-icons">add</i></a>
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Product" href="/addproductsale"><i class="material-icons">add</i></a>
 
 
         </div>
@@ -45,9 +45,9 @@
 
 <hr>
 
-    #if($purchases.size() == 0)
+    #if($sales.size() == 0)
 
-        <p class="text lighten" >Click the top right button to add a Product.</p>
+        <p class="text lighten" >Click the top right button to add a product for sale.</p>
     #else
              <table class = "responsive-table">
                     <thead>
@@ -56,18 +56,18 @@
                           <th>Name</th>
                           <th>Amount</th>
                            <th>Description</th>
-                            <th>Vendor</th>
+                        
                       </tr>
                     </thead>
 
                     <tbody>
-                    #foreach($purchase in $purchases)
+                    #foreach($sale in $sales)
                       <tr>
 
-                        <td>$purchase.getName()</td>
-                        <td>$purchase.getAmount()</td>
-                        <td>$purchase.getDescription()</td>
-                        <td>$purchase.getVendor($purchase.getVendor_id()).getName()</td>
+                        <td>$sale.getName()</td>
+                        <td>$sale.getAmount()</td>
+                        <td>$sale.getDescription()</td>
+               
                       </tr>
                     #end
                     </tbody>

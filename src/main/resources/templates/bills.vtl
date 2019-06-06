@@ -1,0 +1,116 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add a new bill" href="/addbill"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+            business news can go here
+        </div>
+
+        <div class = "col m8">
+
+        <h2>BILLS</h2>
+
+<hr>
+
+    #if($bills.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add a bill.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+
+                          <th>Date</th>
+                          <th>Description</th>
+                           <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Payment Status</th>
+                            <th>Vendor</th>
+                            <th>Product</th>
+                            <th>Account</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($bill in $bills)
+                      <tr>
+
+                        <td>$bill.getFormattedDate()</td>
+                        <td>$bill.getDescription()</td>
+                        <td>$bill.getQuantity()</td>
+                        <td>$bill.getPrice()</td>
+                        <td>
+
+                        #if($bill.isPaid())
+                              <span class="new badge" data-badge-caption="">Paid</span>
+                          #else
+                              <span class="new badge red" data-badge-caption="">Not-paid</span>
+                        #end
+
+                        </td>
+                        <td>$bill.getVendor($bill.getVendor_id()).getName()</td>
+                        <td>$bill.getProduct($bill.getPurchase_id()).getName()</td>
+                        <td>$bill.getAccount($bill.getPayment_id()).getName()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
