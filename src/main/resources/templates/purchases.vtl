@@ -12,7 +12,7 @@
 
 
 
-  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Expense" href="/addexpense"><i class="material-icons">add</i></a>
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Income" href="/addincome"><i class="material-icons">add</i></a>
 
 
         </div>
@@ -41,13 +41,13 @@
 
         <div class = "col m8">
 
-        <h2>expenses</h2>
+        <h2>INCOMES</h2>
 
 <hr>
 
-    #if($expenses.size() == 0)
+    #if($incomes.size() == 0)
 
-        <p class="text lighten" >Click the top right button to add an Expense.</p>
+        <p class="text lighten" >Click the top right button to add an Income.</p>
     #else
              <table class = "responsive-table">
                     <thead>
@@ -61,13 +61,13 @@
                     </thead>
 
                     <tbody>
-                    #foreach($Expense in $expenses)
+                    #foreach($income in $incomes)
                       <tr>
-                        <td>$Expense.getFormattedDate()</td>
-                        <td>$Expense.getName()</td>
-                        <td>$Expense.getDescription()</td>
-                        <td>$Expense.getAmount()</td>
-                        <td>$Expense.getAccount($Expense.getAccount_id()).getName()</td>
+                        <td>$income.getFormattedDate()</td>
+                        <td>$income.getName()</td>
+                        <td>$income.getDescription()</td>
+                        <td>$income.getAmount()</td>
+                        <td>$income.getAccount($income.getAccount_id()).getName()</td>
                       </tr>
                     #end
                     </tbody>

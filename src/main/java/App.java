@@ -78,6 +78,7 @@ public class App{
 
         get("/expenses", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("expenses", Expense.all());
             model.put("template", "templates/expenses.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -154,5 +155,50 @@ public class App{
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
+        get("/addexpense", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("accounts", Account.all());
+            model.put("template", "templates/addexpense.vtl");
+            return new ModelAndView(model,layout);
+        },new VelocityTemplateEngine());
+
+        post("/addingexpense", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String description = request.queryParams("description");
+            int amount = Integer.parseInt(request.queryParams("amount"));
+            int account_id = Integer.parseInt(request.queryParams("account_id"));
+            Expense expense = new Expense(name,description,amount,account_id);
+            expense.save();
+            String url = String.format("/expenses");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/addproductpurchase", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/addproductpurchase.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/purchases", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("purchases", Purchases.all());
+            model.put("template", "templates/purchases.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/addingproductpurchase", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String description = request.queryParams("description");
+            int amount = Integer.parseInt(request.queryParams("amount"));
+            int vendor_id = Integer.parseInt(request.queryParams("vendor_id"));
+            Purchases purchases = new Purchases(name,amount,vendor_id,description);
+            purchases.save();
+            String url = String.format("/purchases");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 }
