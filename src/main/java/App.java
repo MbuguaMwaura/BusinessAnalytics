@@ -31,7 +31,7 @@ public class App{
 
         get("/customers", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-//            model.put("customers", Customer.all());
+            model.put("customers", Customer.all());
             model.put("template", "templates/customers.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -89,5 +89,17 @@ public class App{
             model.put("template", "templates/addcustomer.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
+
+        post("/addingcustomer", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            int number =Integer.parseInt( request.queryParams("number"));
+            String email = request.queryParams("email");
+            Customer customer = new Customer(name,email,number);
+            customer.save();
+            String url = String.format("/customers");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 }
