@@ -18,7 +18,7 @@ public class App{
 
 
     public static void main(String[] args){
-        System.out.println(Bill.all());
+        System.out.println(Bill.price());
 
         staticFileLocation("/public");
         String layout = "templates/layoutMbugua.vtl";
@@ -66,6 +66,7 @@ public class App{
 
         get("/bills", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("prices", Bill.price());
             model.put("accounts", Account.all());
             model.put("vendors", Vendor.all());
             model.put("purchases", Purchases.all());

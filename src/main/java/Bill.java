@@ -89,6 +89,17 @@ public class Bill{
         return sum;
     }
 
+
+
+    public static List<Bill> price(){
+        try(Connection connection = DB.sql2o.open()){
+            String sql = "SELECT price FROM bill";
+            return connection.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Bill.class);
+        }
+    }
+
 //    public static List<Bill> allBills(){
 //        Bill bills =
 //    }

@@ -43,7 +43,7 @@
 
         <h2>BILLS</h2>
 
-        <p>$bills.getTotalBills($bills)</p>
+        <p>$bills.price()</p>
 
 
 
@@ -72,6 +72,7 @@
                     #foreach($bill in $bills)
                       <tr>
 
+
                         <td>$bill.getFormattedDate()</td>
                         <td>$bill.getDescription()</td>
                         <td>$bill.getQuantity()</td>
@@ -94,6 +95,12 @@
                   </table>
 
         #end
+         #foreach($price in $prices)
+
+            $price.getPrice()
+
+         #end
+
         </div>
 
         <div class = "col m1">
