@@ -1,0 +1,100 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Income" href="/addincome"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+            business news can go here
+        </div>
+
+        <div class = "col m8">
+
+        <h2>INCOMES</h2>
+
+<hr>
+
+    #if($incomes.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add an Income.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+                          <th>Date</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                           <th>Amount</th>
+                            <th>Account</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($income in $incomes)
+                      <tr>
+                        <td>$income.getFormattedDate()</td>
+                        <td>$income.getName()</td>
+                        <td>$income.getDescription()</td>
+                        <td>$income.getAmount()</td>
+                        <td>$income.getAccount($income.getAccount_id()).getName()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

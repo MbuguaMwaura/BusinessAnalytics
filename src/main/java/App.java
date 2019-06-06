@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class App{
 
         get("/accounts", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("accounts", Account.all());
             model.put("template", "templates/accounts.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -50,6 +52,7 @@ public class App{
 
         get("/vendors", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("vendors", Vendor.all());
             model.put("template", "templates/vendors.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -68,6 +71,7 @@ public class App{
 
         get("/incomes", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("incomes", Income.all());
             model.put("template", "templates/incomes.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -101,5 +105,54 @@ public class App{
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        get("/addvendor", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/addvendors.vtl");
+            return new ModelAndView(model,layout);
+        },new VelocityTemplateEngine());
+
+        post("/addingvendor", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            int number =Integer.parseInt( request.queryParams("number"));
+            String email = request.queryParams("email");
+            Vendor vendor = new Vendor(name,email,number);
+            vendor.save();
+            String url = String.format("/vendors");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/addingaccount", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            Account account = new Account(name);
+            account.save();
+            String url = String.format("/accounts");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/addincome", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("accounts", Account.all());
+            model.put("template", "templates/addincome.vtl");
+            return new ModelAndView(model,layout);
+        },new VelocityTemplateEngine());
+
+        post("/addingincome", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String description = request.queryParams("description");
+            int amount = Integer.parseInt(request.queryParams("amount"));
+            int account_id = Integer.parseInt(request.queryParams("account_id"));
+            Income income = new Income(name,description,amount,account_id);
+            income.save();
+            String url = String.format("/incomes");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
     }
 }

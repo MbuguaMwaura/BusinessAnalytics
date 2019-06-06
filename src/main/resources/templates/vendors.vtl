@@ -1,0 +1,96 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add a Vendor" href="/addvendor"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+            business news can go here
+        </div>
+
+        <div class = "col m8">
+
+        <h2>VENDORS</h2>
+
+<hr>
+
+    #if($vendors.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add your vendors.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Phone Number</th>
+                          <th>Email Address</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($vendor in $vendors)
+                      <tr>
+                        <td>$vendor.getName()</td>
+                        <td>$vendor.getNumber()</td>
+                        <td>$vendor.getEmail()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

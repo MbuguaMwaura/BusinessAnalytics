@@ -1,6 +1,7 @@
 import org.sql2o.*;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +44,14 @@ public class Income{
     public int getAccount_id() {
         return account_id;
     }
+    public String getFormattedDate(){
+        return DateFormat.getDateTimeInstance().format(date);
+    }
+
+    public Account getAccount(int id){
+        return Account.find(id);
+    }
+
 
     @Override
     public boolean equals(Object o) {
