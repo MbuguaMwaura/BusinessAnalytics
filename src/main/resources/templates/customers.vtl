@@ -36,7 +36,10 @@
 
 
         <div class = "col m3 ">
-            business news can go here
+        #foreach ($story in $stories )
+        <p style=" font-size: 130%;">$story.getTitle() $story.getSource().getName()<p>
+        <p>$story.getBody().substring(0, 100) .......<a id="show-button">Read More</a><p>
+        #end
         </div>
 
         <div class = "col m8">
@@ -80,17 +83,3 @@
 
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
