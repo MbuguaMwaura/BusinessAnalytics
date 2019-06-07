@@ -52,6 +52,17 @@ public class Income{
         return Account.find(id);
     }
 
+    public static int total() {
+        try (Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT amount FROM income";
+            List<Integer> incomes = connection.createQuery(sql).executeAndFetch(Integer.class);
+            int sum = 0;
+            for (int d : incomes)
+                sum += d;
+            return sum;
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {

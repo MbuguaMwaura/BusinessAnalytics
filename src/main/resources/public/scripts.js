@@ -70,23 +70,33 @@
 //    }
 //});
 
+
 var ctx = document.getElementById('myChart').getContext('2d');
+var v1 = parseInt(document.getElementById("chartdata").value);
+var v2 = parseInt(document.getElementById("chartdata2").value);
+console.log(v1)
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45] // this is where we need to be able to key-in the user inputted data
+
+            data: [v1, v2]      // this is where we need to be able to key-in the user inputted data
 
         }]
-    },
-
-    // Configuration options go here
-    options: {}
+    }
 });
+
+    function graphMe(){
+
+         var v1 = parseInt(document.getElementById("chartdata").value);
+
+
+
+    myChart.data.datasets[0].data[0] = v1
+
+    myChart.update();
+     }

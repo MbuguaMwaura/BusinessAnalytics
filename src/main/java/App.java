@@ -1,8 +1,5 @@
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Arrays;
+import java.util.*;
 
 
 import spark.ModelAndView;
@@ -59,6 +56,7 @@ public class App{
 
         get("/receipts", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("total", Receipt.total());
             model.put("receipts", Receipt.all());
             model.put("template", "templates/receipts.vtl");
             return new ModelAndView(model,layout);
@@ -77,6 +75,7 @@ public class App{
 
         get("/incomes", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("total", Income.total());
             model.put("incomes", Income.all());
             model.put("template", "templates/incomes.vtl");
             return new ModelAndView(model,layout);
@@ -84,6 +83,7 @@ public class App{
 
         get("/expenses", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("total", Expense.total());
             model.put("expenses", Expense.all());
             model.put("template", "templates/expenses.vtl");
             return new ModelAndView(model,layout);

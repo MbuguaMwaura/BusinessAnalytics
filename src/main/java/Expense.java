@@ -53,6 +53,16 @@ public class Expense{
         return Account.find(id);
     }
 
+    public static int total() {
+        try (Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT amount FROM expense";
+            List<Integer> expenses = connection.createQuery(sql).executeAndFetch(Integer.class);
+            int sum = 0;
+            for (int d : expenses)
+                sum += d;
+            return sum;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -67,6 +67,33 @@ public class Receipt{
         return DateFormat.getDateTimeInstance().format(date);
     }
 
+    public static int receiptamount(int id) {
+        try(Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT quantity FROM receipt WHERE id=:id";
+            String sqlTwo = "SELECT price FROM receipt WHERE id=:id";
+            Integer quantity = connection.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(Integer.class);
+            Integer price = connection.createQuery(sqlTwo)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(Integer.class);
+
+
+            return quantity*price;
+        }
+    }
+
+    public static int total() {
+        try (Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT id FROM receipt";
+            List<Integer> ids = connection.createQuery(sql).executeAndFetch(Integer.class);
+
+            int sum = 0;
+            for (int id : ids)
+                sum += receiptamount(id);
+            return sum;
+        }
+    }
 
 
     public Customer getCustomer(int id) {

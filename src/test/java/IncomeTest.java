@@ -38,4 +38,13 @@ public class IncomeTest{
         income.update("Incometwo", "expensive", 1011, 2);
         assertEquals("Incometwo", Income.find(income.getId()).getName());
     }
+
+    @Test
+    public void total_returnsSummedIncomes(){
+        Income income = new Income("Income", "expensive", 1021, 1);
+        income.save();
+        Income income1 = new Income("Incometwo", "expensive", 1011, 2);
+        income1.save();
+        assertEquals(2032, Income.total());
+    }
 }

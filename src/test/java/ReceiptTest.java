@@ -42,4 +42,13 @@ public class ReceiptTest{
         receipt.update("Another receipt", 7, 19, true, 1, 2, 1);
         assertEquals("Another receipt", Receipt.find(receipt.getId()).getDescription());
     }
+
+    @Test
+    public void total_calculatesTheTotal(){
+        Receipt receipt = new Receipt("A receipt", 8, 12, false, 1, 1, 2);
+        receipt.save();
+        Receipt receipt1 = new Receipt("Another receipt", 7, 19, true, 1, 2, 1);
+        receipt1.save();
+        assertEquals(229, Receipt.total());
+    }
 }
