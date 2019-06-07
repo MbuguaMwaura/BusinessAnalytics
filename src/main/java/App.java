@@ -30,51 +30,59 @@ public class App{
         ApiKeyAuth app_key = (ApiKeyAuth) defaultClient.getAuthentication("app_key");
         app_key.setApiKey("13b485a29c778cbb838844e853911a7b");
 
+        DefaultApi apiInstance = new DefaultApi();
+
+        StoriesParams.Builder storiesBuilder = StoriesParams.newBuilder();
+
+        String categoriesTaxonomy = "iab-qag";
+        List language = Arrays.asList("IAB3", "IAB3-4", "IAB20-7");
+
+
+
+        storiesBuilder.setTitle("Kenya AND (Business OR Nairobi OR Mombasa profit OR loss OR invests OR investors OR tender OR shilling OR dollar OR trade");
+        storiesBuilder.setSortBy("social_shares_count.facebook");
+        storiesBuilder.setLanguage(Arrays.asList("en"));
+        storiesBuilder.setCategoriesTaxonomy(categoriesTaxonomy);
+        storiesBuilder.setNotLanguage(Arrays.asList("es", "it"));
+        storiesBuilder.setPublishedAtStart("NOW-7DAYS");
+        storiesBuilder.setPublishedAtEnd("NOW");
+        storiesBuilder.setMediaImagesWidthMin(400);
+        storiesBuilder.setMediaImagesWidthMax(1000);
+        storiesBuilder.setMediaImagesHeightMin(500);
+        storiesBuilder.setMediaImagesHeightMax(1000);
+        storiesBuilder.setEntitiesBodyLinksDbpedia(Arrays.asList(
+                "http://dbpedia.org/resource/Donald_Trump",
+                "http://dbpedia.org/resource/Hillary_Rodham_Clinton"
+        ));
+
+          Map<String, Object> model = new HashMap<String, Object>();
+          try {
+            Stories result = apiInstance.listStories(storiesBuilder.build());
+            model.put("stories", result.getStories());
+          } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#listStories");
+            e.printStackTrace();
+          }
+
         staticFileLocation("/public");
         String layout = "templates/layoutMbugua.vtl";
 
 
         get("/accounts", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+          Map<String, Object> model = new HashMap<String, Object>();
+          try {
+            Stories result = apiInstance.listStories(storiesBuilder.build());
+            model.put("stories", result.getStories());
+          } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#listStories");
+            e.printStackTrace();
+          }
             model.put("accounts", Account.all());
             model.put("template", "templates/accounts.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
 
         get("/customers", (request, response) -> {
-          DefaultApi apiInstance = new DefaultApi();
-
-          StoriesParams.Builder storiesBuilder = StoriesParams.newBuilder();
-
-          String categoriesTaxonomy = "iab-qag";
-          List language = Arrays.asList("IAB3", "IAB3-4", "IAB20-7");
-
-
-
-          storiesBuilder.setTitle("Kenya AND (Business OR Nairobi OR Mombasa profit OR loss OR invests OR investors OR tender OR shilling OR dollar OR trade");
-          storiesBuilder.setSortBy("social_shares_count.facebook");
-          storiesBuilder.setLanguage(Arrays.asList("en"));
-          storiesBuilder.setCategoriesTaxonomy(categoriesTaxonomy);
-          storiesBuilder.setNotLanguage(Arrays.asList("es", "it"));
-          storiesBuilder.setPublishedAtStart("NOW-7DAYS");
-          storiesBuilder.setPublishedAtEnd("NOW");
-          storiesBuilder.setMediaImagesWidthMin(400);
-          storiesBuilder.setMediaImagesWidthMax(1000);
-          storiesBuilder.setMediaImagesHeightMin(500);
-          storiesBuilder.setMediaImagesHeightMax(1000);
-          storiesBuilder.setEntitiesBodyLinksDbpedia(Arrays.asList(
-                  "http://dbpedia.org/resource/Donald_Trump",
-                  "http://dbpedia.org/resource/Hillary_Rodham_Clinton"
-          ));
-
-            Map<String, Object> model = new HashMap<String, Object>();
-            try {
-              Stories result = apiInstance.listStories(storiesBuilder.build());
-              model.put("stories", result.getStories());
-            } catch (ApiException e) {
-              System.err.println("Exception when calling DefaultApi#listStories");
-              e.printStackTrace();
-            }
             model.put("customers", Customer.all());
             model.put("template", "templates/customers.vtl");
             return new ModelAndView(model,layout);
