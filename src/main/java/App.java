@@ -32,9 +32,9 @@ public class App{
 
            if(!User.allEmails().contains(email)){
                if(password.equals(cpassword)){
-                   User user = new User(username,email,password);
+                   User user = new User(email,password);
                    user.register();
-                   model.put("username", user.getUsername());
+                   model.put("email", user.getEmail());
                    model.put("template", "templates/dash.vtl");
                }
                else{
