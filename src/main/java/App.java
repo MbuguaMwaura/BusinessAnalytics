@@ -11,6 +11,12 @@ public class App{
         staticFileLocation("/public");
         String layout = "templates/layout.vtl";
 
+        get("/", (request,response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/index.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
         get("/signup", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("template","templates/signup.vtl");
@@ -33,9 +39,10 @@ public class App{
                        User user = new User(email,password);
                        user.register();
                        model.put("username", user.getUsername());
-                       model.put("template", "templates/index.vtl");
+                       model.put("template", "templates/dash.vtl");
                    }
                    else{
+                       model.put("template", "templates/signup.vtl");
                        System.out.println("Please confirm your password");
                    }
                }
@@ -70,7 +77,7 @@ public class App{
                     User user = new User(email,password);
                     if(user.getUserPassword().equals(password)){
                         model.put("email", email);
-                        model.put("template", "templates/index.vtl");
+                        model.put("template", "templates/dash.vtl");
                     }
                     else{
                         model.put("template","templates/login.vtl");
