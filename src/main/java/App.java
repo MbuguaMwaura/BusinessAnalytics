@@ -30,26 +30,21 @@ public class App{
            String password = request.queryParams("password");
            String cpassword = request.queryParams("cpassword");
 
-           if(username.trim().isEmpty() || email.trim().isEmpty() || password.trim().isEmpty() || cpassword.trim().isEmpty()){
-               System.out.println("Enter all the fields");
-           }
-           else {
-               if(!User.allEmails().contains(email)){
-                   if(password.equals(cpassword)){
-                       User user = new User(email,password);
-                       user.register();
-                       model.put("username", user.getUsername());
-                       model.put("template", "templates/dash.vtl");
-                   }
-                   else{
-                       model.put("template", "templates/signup.vtl");
-                       System.out.println("Please confirm your password");
-                   }
+           if(!User.allEmails().contains(email)){
+               if(password.equals(cpassword)){
+                   User user = new User(username,email,password);
+                   user.register();
+                   model.put("username", user.getUsername());
+                   model.put("template", "templates/dash.vtl");
                }
                else{
-                   System.out.println("Email already exists, Please login");
-                   response.redirect("/login");
+                   model.put("template", "templates/signup.vtl");
+                   System.out.println("Please confirm your password");
                }
+           }
+           else{
+               System.out.println("Email already exists, Please login");
+               response.redirect("/login");
            }
            return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
