@@ -51,4 +51,13 @@ public class ReceiptTest{
         receipt1.save();
         assertEquals(229, Receipt.total());
     }
+
+    @Test
+    public void unpaid_getUnpaidReceipts(){
+        Receipt receipt = new Receipt("A receipt", 8, 12, false, 1, 1, 2);
+        receipt.save();
+        Receipt receipt1 = new Receipt("Another receipt", 7, 19, true, 1, 2, 1);
+        receipt1.save();
+        assertEquals(96, Receipt.unpaid());
+    }
 }

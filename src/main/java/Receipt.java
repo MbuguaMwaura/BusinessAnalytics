@@ -83,6 +83,18 @@ public class Receipt{
         }
     }
 
+    public static int unpaid() {
+        try (Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT id FROM receipt where paid = false";
+            List<Integer> ids = connection.createQuery(sql).executeAndFetch(Integer.class);
+
+            int sum = 0;
+            for (int id : ids)
+                sum += receiptamount(id);
+            return sum;
+        }
+    }
+
     public static int total() {
         try (Connection connection = DB.sql2o.open()) {
             String sql = "SELECT id FROM receipt";
@@ -94,6 +106,8 @@ public class Receipt{
             return sum;
         }
     }
+
+
 
 
     public Customer getCustomer(int id) {
@@ -145,6 +159,23 @@ public class Receipt{
             return connection.createQuery(sql).executeAndFetch(Receipt.class);
         }
     }
+
+//    public static int getUnpaid() {
+//        try (Connection connection = DB.sql2o.open()) {
+//            String sql = "SELECT * FROM receipt WHERE paid = false";
+//            List<Integer> unpaid = connection.createQuery(sql).executeAndFetch(Integer.class);
+//
+//            int sum = 0;
+//            if(unpaid.size() != 0) {
+//
+//
+//                for (int id : unpaid)
+//                    sum += id;
+//            }
+//                return sum;
+//
+//        }
+//    }
 
     public static Receipt find(int id){
         try(Connection connection = DB.sql2o.open()) {

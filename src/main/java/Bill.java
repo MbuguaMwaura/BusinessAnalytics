@@ -84,28 +84,12 @@ public class Bill{
         return Purchases.find(id);
     }
 
-//    public static int getTotalBills(){
-//        try(Connection connection = DB.sql2o.open()){
-//
-//            String sql = "SELECT price FROM bill";
-//            List<Bill> bills = connection.createQuery(sql)
-//                    .throwOnMappingFailure(false)
-//                    .executeAndFetch(Bill.class);
-//            Bill[] array  = new Bill[bills.size()];
-//            for (int i =0; i < bills.size(); i++)
-//                array[i] = bills.get(i);
-//
-//
-//            int sum = IntStream.of(array).sum();
-//        }
-//
-//        return sum;
-//    }
+
 
 
 
     public static List<Bill> price(){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "SELECT price FROM bill";
             return connection.createQuery(sql)
                     .throwOnMappingFailure(false)
@@ -113,10 +97,34 @@ public class Bill{
         }
     }
 
-//    public static List<Bill> allBills(){
-//        Bill bills =
-//    }
 
+    public static int billamount(int id) {
+        try(org.sql2o.Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT quantity FROM bill WHERE id=:id";
+            String sqlTwo = "SELECT price FROM bill WHERE id=:id";
+            Integer quantity = connection.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(Integer.class);
+            Integer price = connection.createQuery(sqlTwo)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(Integer.class);
+
+
+            return quantity*price;
+        }
+    }
+
+    public static int total() {
+        try (org.sql2o.Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT id FROM bill";
+            List<Integer> ids = connection.createQuery(sql).executeAndFetch(Integer.class);
+
+            int sum = 0;
+            for (int id : ids)
+                sum += billamount(id);
+            return sum;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -135,7 +143,7 @@ public class Bill{
 
 
     public void save(){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "INSERT INTO bill (date, description, quantity, price, paid, vendor_id, purchase_id, payment_id) VALUES (now(),:description,:quantity, :price, :paid, :vendor_id, :purchase_id, :payment_id)";
             this.id = (int) connection.createQuery(sql, true)
                     .addParameter("description", this.description)
@@ -151,7 +159,7 @@ public class Bill{
     }
 
     public static List<Bill> all(){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "SELECT * FROM bill";
             return connection.createQuery(sql)
                     .throwOnMappingFailure(false)
@@ -159,8 +167,21 @@ public class Bill{
         }
     }
 
+
+    public static int unpaid() {
+        try (org.sql2o.Connection connection = DB.sql2o.open()) {
+            String sql = "SELECT id FROM bill where paid = false";
+            List<Integer> ids = connection.createQuery(sql).executeAndFetch(Integer.class);
+
+            int sum = 0;
+            for (int id : ids)
+                sum += billamount(id);
+            return sum;
+        }
+    }
+
     public static Bill find(int id){
-        try(Connection connection = DB.sql2o.open()) {
+        try(org.sql2o.Connection connection = DB.sql2o.open()) {
             String sql = "SELECT * FROM bill WHERE id=:id";
             Bill bill = connection.createQuery(sql)
                     .addParameter("id",id)

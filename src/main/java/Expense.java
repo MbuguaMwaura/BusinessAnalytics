@@ -1,8 +1,7 @@
-import org.sql2o.*;
+import org.sql2o.Connection;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,7 +53,7 @@ public class Expense{
     }
 
     public static int total() {
-        try (Connection connection = DB.sql2o.open()) {
+        try (org.sql2o.Connection connection = DB.sql2o.open()) {
             String sql = "SELECT amount FROM expense";
             List<Integer> expenses = connection.createQuery(sql).executeAndFetch(Integer.class);
             int sum = 0;
@@ -77,7 +76,7 @@ public class Expense{
     }
 
     public void save(){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "INSERT INTO expense (name, description, amount, date, account_id) VALUES (:name , :description, :amount, now(), :account_id)";
             this.id = (int) connection.createQuery(sql, true)
                     .addParameter("name", this.name)
@@ -90,7 +89,7 @@ public class Expense{
     }
 
     public static List<Expense> all(){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "SELECT * FROM expense";
             return connection.createQuery(sql).executeAndFetch(Expense.class);
         }

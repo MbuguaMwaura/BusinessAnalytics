@@ -12,17 +12,40 @@ import static spark.Spark.*;
 
 public class App{
 
-
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }
 
     public static void main(String[] args){
-        System.out.println(Bill.price());
+        port(getHerokuAssignedPort());
+//        ApiClient defaultClient = Configuration.getDefaultApiClient();
+//
+//        // Configure API key authorization: app_id
+//        ApiKeyAuth app_id = (ApiKeyAuth) defaultClient.getAuthentication("app_id");
+//        app_id.setApiKey("670fa679");
+//
+//        // Configure API key authorization: app_key
+//        ApiKeyAuth app_key = (ApiKeyAuth) defaultClient.getAuthentication("app_key");
+//        app_key.setApiKey("13b485a29c778cbb838844e853911a7b");
+
 
         staticFileLocation("/public");
         String layout = "templates/layoutMbugua.vtl";
 
 
         get("/accounts", (request, response) -> {
+
+
+
             Map<String, Object> model = new HashMap<String, Object>();
+
+
+
+
             model.put("accounts", Account.all());
             model.put("template", "templates/accounts.vtl");
             return new ModelAndView(model,layout);
@@ -56,6 +79,7 @@ public class App{
 
         get("/receipts", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+
             model.put("total", Receipt.total());
             model.put("receipts", Receipt.all());
             model.put("template", "templates/receipts.vtl");
@@ -64,6 +88,7 @@ public class App{
 
         get("/bills", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("total", Bill.total());
             model.put("prices", Bill.price());
             model.put("accounts", Account.all());
             model.put("vendors", Vendor.all());
@@ -91,6 +116,12 @@ public class App{
 
         get("/dash", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("unpaidbill", Bill.unpaid());
+            model.put("unpaid", Receipt.unpaid());
+            model.put("income", Income.total());
+            model.put("expense", Expense.total());
+            model.put("receipt", Receipt.total());
+            model.put("bill", Bill.total());
             model.put("template", "templates/dash.vtl");
             return new ModelAndView(model,layout);
         },new VelocityTemplateEngine());
@@ -289,5 +320,82 @@ public class App{
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
+
+        get("/", (request,response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String url = String.format("/dash");
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/signup", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template","templates/signup.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/signup", (request,response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String username = request.queryParams("username");
+            String email = request.queryParams("email");
+            String password = request.queryParams("password");
+            String cpassword = request.queryParams("cpassword");
+
+            if(!User.allEmails().contains(email)){
+                if(password.equals(cpassword)){
+                    User user = new User(email,password);
+                    user.register();
+                    model.put("email", user.getEmail());
+//                    model.put("template", "templates/dash.vtl");
+                    response.redirect("/dash");
+
+                }
+                else{
+                    response.redirect("/signup");
+                    System.out.println("Please confirm your password");
+                }
+            }
+            else{
+                System.out.println("Email already exists, Please login");
+                response.redirect("/login");
+            }
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/login", (request,response) ->{
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/login.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/login", (request,response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String email = request.queryParams("email");
+            String password = request.queryParams("password");
+
+            if (email.trim().isEmpty() || password.trim().isEmpty()){
+                System.out.println("Please enter your username and password");
+            }
+            else {
+                if(!(User.allEmails().contains(email))){
+                    model.put("template", "templates/login.vtl");
+                    System.out.println("Email does not exist");
+                }
+                else {
+                    User user = new User(email,password);
+                    if(user.getUserPassword().equals(password)){
+                        model.put("email", email);
+                        response.redirect("/dash");
+                    }
+                    else{
+                        model.put("template","templates/login.vtl");
+                        System.out.println("Wrong password");
+                    }
+                }
+            }
+            return new ModelAndView(model,layout);
+        }, new VelocityTemplateEngine());
+
     }
 }
+

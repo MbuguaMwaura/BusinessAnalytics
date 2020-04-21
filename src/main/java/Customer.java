@@ -1,4 +1,4 @@
-import org.sql2o.*;
+import org.sql2o.Connection;
 
 import java.util.List;
 import java.util.Objects;
@@ -57,14 +57,14 @@ public class Customer{
     }
 
     public static List<Customer> all(){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "SELECT * FROM customer";
             return connection.createQuery(sql).executeAndFetch(Customer.class);
         }
     }
 
     public static Customer find(int id){
-        try(Connection connection = DB.sql2o.open()) {
+        try(org.sql2o.Connection connection = DB.sql2o.open()) {
             String sql = "SELECT * FROM customer WHERE id=:id";
             Customer customer = connection.createQuery(sql)
                     .addParameter("id",id)
@@ -73,7 +73,7 @@ public class Customer{
         }
     }
     public void update(String name, String email, int number){
-        try(Connection connection = DB.sql2o.open()){
+        try(org.sql2o.Connection connection = DB.sql2o.open()){
             String sql = "UPDATE customer  SET name = :name , email = :email , number = :number WHERE id = :id";
             connection.createQuery(sql)
                     .addParameter("name", name)
