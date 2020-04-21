@@ -1,0 +1,83 @@
+<div class = "container">
+
+  <div class="row">
+
+    <div class="col s12 m6 l10 ">
+      <div id="introduction" class="section scrollspy space">
+        <div><canvas id="myChart"></canvas></div>
+
+
+         <input type="hidden" id="chartdata" value="$income">
+         <input type="hidden" id="chartdata2" value="$expense">
+          <input type="hidden" id="chartdata3" value="$bill">
+          <input type="hidden" id="chartdata4" value="$receipt">
+
+
+          <p class = "text center down"><em>This bar chart visualizes the main accounts that handle cashflows withing the organizations</em></p>
+      </div>
+
+      <div id="structure" class="section scrollspy space">
+
+         <hr>
+
+      #if($unpaid <= 0)
+            <h3>There are no unpaid customer bills</h3>
+
+      #else
+      <h6>Unpaid Customer Bills:</h6>
+        <h6 class = "due">KES $unpaid</h6>
+      #end
+
+
+      #if($unpaidbill <= 0)
+                  <h3>There are no unpaid business bills</h3>
+
+            #else
+             <h6>Unpaid Business Bills:</h6>
+              <h6 class = "due">KES $unpaidbill</h6>
+
+            #end
+<div><canvas id="myChart2"></canvas></div>
+            <input type="hidden" id="chartdata5" value="$income">
+           <input type="hidden" id="chartdata6" value="$unpaidbill">
+
+                     <p class = "text center down"><em>The pie chart visualizes you incomes vs bills in order for the organization <br> to plan a repayment strategy</em></p>
+
+      </div>
+
+      <div id="initialization" class="section scrollspy space">
+
+
+        <div><canvas id="myChart3"></canvas></div>
+                    <input type="hidden" id="chartdata7" value="$income">
+                   <input type="hidden" id="chartdata8" value="$expense">
+
+                     <p class = "text center down"><em>The pie chart visualizes you incomes vs expenses in order for the organization <br> to plan an expense management strategy</em></p>
+
+
+
+      </div>
+    </div>
+    <div class="col hide-on-small-only m3 l2 ">
+      <ul class="section table-of-contents fixed">
+        <li><a href="#introduction">Cash-Flows Barchart</a></li>
+        <li><a href="#structure">Dues</a></li>
+        <li><a href="#initialization">Incomes V Expense</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+

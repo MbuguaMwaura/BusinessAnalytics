@@ -1,0 +1,37 @@
+nav{
+    background-color:#26a69a;
+}
+
+.color{
+ background-color:#26a69a;
+ color:white;
+}
+
+.border{
+border: 3px solid black;
+}
+
+.text{
+    color:#26a69a;
+}
+
+.lighter{
+    font: 20px;
+}
+.space{
+height: 100vh;
+}
+.due{
+color:red;
+}
+.fixed{
+    position: fixed;
+}
+
+.down{
+margin-top: 5%;
+}
+
+.back{
+color: white;
+}

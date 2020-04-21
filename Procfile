@@ -1,0 +1,1 @@
+web: ./build/install/mbugua-business-analytics/bin/mbugua-business-analytics

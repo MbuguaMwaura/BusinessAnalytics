@@ -1,0 +1,100 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Product" href="/addproductpurchase"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+
+        </div>
+
+        <div class = "col m8">
+
+        <h2>PRODUCTS</h2>
+
+<hr>
+
+    #if($purchases.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add a Product.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+
+                          <th>Name</th>
+                          <th>Price per Unit</th>
+                           <th>Description</th>
+                            <th>Vendor</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($purchase in $purchases)
+                      <tr>
+
+                        <td>$purchase.getName()</td>
+                        <td>$purchase.getAmount()</td>
+                        <td>$purchase.getDescription()</td>
+                        <td>$purchase.getVendor($purchase.getVendor_id()).getName()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

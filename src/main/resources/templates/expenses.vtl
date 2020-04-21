@@ -1,0 +1,111 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add Expense" href="/addexpense"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+
+        </div>
+
+        <div class = "col m8">
+<div class="row">
+<div class = "col m6">
+        <h2>Expenses</h2>
+</div>
+
+</div>
+<div class="row">
+
+<div class = "col m6">
+       <h4 class ="text"><span class = "">Total: </span>  KES $total</h4>
+
+</div>
+
+</div>
+<hr>
+
+    #if($expenses.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add an Expense.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+                          <th>Date</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                           <th>Amount</th>
+                            <th>Account</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($Expense in $expenses)
+                      <tr>
+                        <td>$Expense.getFormattedDate()</td>
+                        <td>$Expense.getName()</td>
+                        <td>$Expense.getDescription()</td>
+                        <td>$Expense.getAmount()</td>
+                        <td>$Expense.getAccount($Expense.getAccount_id()).getName()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

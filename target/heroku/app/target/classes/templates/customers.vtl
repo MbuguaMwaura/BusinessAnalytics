@@ -1,0 +1,96 @@
+
+
+
+    <div class ="row">
+
+        <div class = "col m7">
+
+
+        </div>
+
+        <div class = "col m4 s12">
+
+
+
+  <a class="btn-floating btn-large waves-effect waves-light teal right tooltipped" data-position="bottom" data-tooltip="Add a Customer" href="/addcustomer"><i class="material-icons">add</i></a>
+
+
+        </div>
+
+ <div class = "col m1">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class ="row">
+
+
+
+        <div class = "col m3 ">
+
+        </div>
+
+        <div class = "col m8">
+
+        <h2>CUSTOMERS</h2>
+
+<hr>
+
+    #if($customers.size() == 0)
+
+        <p class="text lighten" >Click the top right button to add your customers.</p>
+    #else
+             <table class = "responsive-table">
+                    <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Phone Number</th>
+                          <th>Email Address</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    #foreach($customer in $customers)
+                      <tr>
+                        <td>$customer.getName()</td>
+                        <td>$customer.getNumber()</td>
+                        <td>$customer.getEmail()</td>
+                      </tr>
+                    #end
+                    </tbody>
+                  </table>
+
+        #end
+        </div>
+
+        <div class = "col m1">
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
